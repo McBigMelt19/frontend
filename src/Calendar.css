@@ -1,0 +1,114 @@
+/* BARRA DEL CALENDARIO */
+.calendar-strip {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto 24px auto;
+    /* Separación con el grid de abajo */
+}
+
+.calendar-container {
+    display: flex;
+    justify-content: space-between;
+    background: var(--social-bg, #f4f4f5);
+    border: 1px solid var(--border, #e5e4e7);
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.calendar-day {
+    background: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+}
+
+.calendar-day:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.calendar-day--hoy {
+    background: var(--dash-verde-bg, rgba(22, 163, 74, 0.1));
+}
+
+.day-name {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text, #71717a);
+}
+
+.day-number {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-h, #18181b);
+}
+
+.day-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--dash-verde, #16a34a);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 2px;
+}
+
+/* ESTILOS PARA LA LISTA DEL MODAL DE BITÁCORA */
+.log-date {
+    font-size: 13px;
+    color: var(--text);
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+
+.log-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.log-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: var(--social-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.log-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.log-cat {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-h);
+}
+
+.log-desc {
+    font-size: 11px;
+    color: var(--text);
+}
+
+.log-monto {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.text-verde {
+    color: var(--dash-verde, #16a34a);
+}
+
+.text-rojo {
+    color: var(--dash-rojo, #dc2626);
+}

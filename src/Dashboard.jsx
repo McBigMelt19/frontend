@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import TransactionModal from './TransactionModal';
+import CalendarStrip from './CalendarStrip';
+import DailyLogModal from './DailyLogModal';
 import './Dashboard.css'
 
 // ============================================================
@@ -9,8 +11,8 @@ import './Dashboard.css'
 // ============================================================
 const DATOS_INICIALES = {
   // ── MÉTRICA 1: Barra de Progreso del Objetivo ─────────────
-  ahorroActual: 450,   // Cuánto llevas ahorrado ($)
-  metaObjetivo: 1000,  // Tu meta total ($)
+  ahorroActual: 1250,   // Cuánto llevas ahorrado ($)
+  metaObjetivo: 1500,  // Tu meta total ($)
 
   // ── MÉTRICA 2: Flujo de Caja Neto ─────────────────────────
   ingresosMes: 100,    // Total de ingresos del mes ($)
@@ -48,10 +50,20 @@ export default function Dashboard() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalConfig, setModalConfig] = useState({ tipo: '', cartera: null });
 
+  // 3. NUEVOS ESTADOS PARA EL MODAL DE LA BITÁCORA
+  const [logModalOpen, setLogModalOpen] = useState(false);
+  const [fechaSeleccionada, setFechaSeleccionada] = useState(null);
+
   // 3. Función para abrir el modal con la configuración correcta
   const abrirModal = (tipo, cartera) => {
     setModalConfig({ tipo, cartera });
     setModalOpen(true);
+  };
+
+  // 5. NUEVA FUNCIÓN PARA ABRIR EL MODAL DE BITÁCORA
+  const handleDiaClick = (fecha) => {
+    setFechaSeleccionada(fecha);
+    setLogModalOpen(true);
   };
 
   // 4. Función para recibir los datos cuando le den a "Guardar"
@@ -76,6 +88,9 @@ export default function Dashboard() {
       <header className="dash-header">
         <h1 className="dash-title">Wallet By JuanJo</h1>
       </header>
+
+      {/* NUEVA SECCIÓN 1: CALENDARIO ────────────── */}
+      <CalendarStrip onDayClick={handleDiaClick} />
 
       <div className="dash-grid">
 
@@ -115,7 +130,7 @@ export default function Dashboard() {
             Para cambiar → edita ingresosMes y gastosMes en DATOS_INICIALES
         ════════════════════════════════════════════════════ */}
         <section className="card card--flujo" aria-label="Flujo de caja neto">
-          <span className="card-label">💵 Flujo Neto del Mes</span>
+          <span className="card-label">💵 Flujo Neto del Mes 01/07-31/07/2026</span>
 
           {/* Número grande — color automático según signo */}
           <p className={`flujo-numero ${flujoNeto >= 0 ? 'positivo' : 'negativo'}`}>
@@ -236,6 +251,20 @@ export default function Dashboard() {
           </div>
         </section>
 
+        {/* ════════════════════════════════════════════════════
+            MÉTRICA 6 — PROXIMOS PAGOS
+            Muestra el saldo y el flujo de cada moneda individual.
+        ════════════════════════════════════════════════════ */}
+        <section className="card card--carteras" aria-label="Estado de las carteras">
+          <span className="card-label">💼 Carteras Físicas / Digitales</span>
+          <div className="carteras-layout">
+            <div className="proximos-pagos">
+
+            </div>
+          </div>
+        </section>
+
+
 
       </div>{/* /dash-grid */}
       {/* 5. INCRUSTAR EL COMPONENTE MODAL AL FINAL DEL MAIN */}
@@ -245,6 +274,13 @@ export default function Dashboard() {
         tipoModal={modalConfig.tipo}
         carteraInfo={modalConfig.cartera || {}} // Evita errores si es null
         onSave={handleGuardarTransaccion}
+      />
+
+      {/* NUEVO: Modal de la bitácora diaria */}
+      <DailyLogModal
+        isOpen={logModalOpen}
+        onClose={() => setLogModalOpen(false)}
+        fecha={fechaSeleccionada}
       />
     </main>
   )

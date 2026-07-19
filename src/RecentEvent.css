@@ -1,0 +1,80 @@
+.card--recent {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    grid-column: 1 / -1;
+    /* Hace que ocupe ambas columnas de la grilla */
+}
+
+.recent-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.recent-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid var(--border, #e5e4e7);
+    /* Soft border for separation */
+    transition: opacity 0.2s ease;
+}
+
+.recent-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.recent-item:hover {
+    opacity: 0.8;
+    /* Subtle interaction */
+}
+
+.recent-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.recent-desc {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-main, #d9dee6);
+    /* Dark text for contrast */
+}
+
+.recent-date {
+    font-size: 0.75rem;
+    color: var(--text-muted, #6b7280);
+    /* Muted gray for secondary info */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.recent-amount {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.recent-amount.positivo {
+    color: var(--success, #10b981);
+    /* Green for income */
+}
+
+.recent-amount.negativo {
+    color: var(--text-main, #da0d0dbf);
+    /* Minimalist approach: expenses are default text color to avoid overwhelming red */
+}
+
+.no-events {
+    font-size: 0.9rem;
+    color: var(--text-muted, #6b7280);
+    text-align: center;
+    padding: 1.5rem 0;
+    font-style: italic;
+}

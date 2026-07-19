@@ -1,0 +1,66 @@
+.carteras-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cartera-item {
+  background: var(--bg);
+  border: 3px solid var(--border);
+  border-radius: 12px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cartera-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cartera-nombre {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.cartera-saldo {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-h);
+  font-family: var(--heading);
+}
+
+.cartera-flujos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.flujo-box {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.flujo-icon {
+  font-size: 10px;
+}
+
+.flujo-box--in {
+  background: var(--dash-verde-bg, rgba(22, 163, 74, 0.08));
+  color: var(--dash-verde, #16a34a);
+  border: 1px solid rgba(22, 163, 74, 0.2);
+}
+
+.flujo-box--out {
+  background: rgba(220, 38, 38, 0.08);
+  color: var(--dash-rojo, #dc2626);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}

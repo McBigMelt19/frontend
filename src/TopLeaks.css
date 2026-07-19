@@ -1,0 +1,70 @@
+.fugas-layout {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dona-svg {
+  flex-shrink: 0;
+  transform: rotate(-90deg);
+}
+
+.dona-label-monto {
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--text-h);
+  transform: rotate(90deg);
+  transform-origin: 56px 56px;
+  font-family: 'Inter', var(--sans);
+}
+
+.dona-label-sub {
+  font-size: 9px;
+  fill: var(--text);
+  transform: rotate(90deg);
+  transform-origin: 56px 56px;
+  font-family: 'Inter', var(--sans);
+}
+
+.fugas-leyenda {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.fuga-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fuga-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.fuga-dot--0 { background: var(--fuga-color-0, #7c3aed); }
+.fuga-dot--1 { background: var(--fuga-color-1, #0ea5e9); }
+.fuga-dot--2 { background: var(--fuga-color-2, #f59e0b); }
+
+.fuga-texto {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 12px;
+}
+
+.fuga-categoria {
+  color: var(--text);
+}
+
+.fuga-monto {
+  color: var(--text-h);
+  font-weight: 600;
+}

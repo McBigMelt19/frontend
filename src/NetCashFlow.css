@@ -1,0 +1,31 @@
+.flujo-numero {
+  font-size: clamp(2.2rem, 6vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin: 0 0 12px;
+}
+
+.flujo-numero.positivo {
+  color: var(--dash-verde, #16a34a);
+}
+
+.flujo-numero.negativo {
+  color: var(--dash-rojo, #dc2626);
+}
+
+.flujo-detalle {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text);
+}
+
+.flujo-ingreso {
+  color: var(--dash-verde, #16a34a);
+}
+
+.flujo-gasto {
+  color: var(--dash-rojo, #dc2626);
+}

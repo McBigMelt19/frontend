@@ -15,11 +15,31 @@ export default function TransactionModal({ isOpen, onClose, tipoModal, carteraIn
     const colorTema = esIngreso ? 'var(--dash-verde)' : 'var(--dash-rojo)';
     const titulo = esIngreso ? 'Registrar Ingreso' : 'Registrar Gasto';
 
-    // Categorías simuladas (luego las traerás de tu base de datos)
-    const categoriasIngreso = ['Taller Mecánico', 'Sueldo Fijo', 'Venta Repuestos', 'Otros'];
-    const categoriasGasto = ['Transporte - Moto', 'Transporte - Taxis', 'Comida Calle', 'Suscripciones', 'Ahorro Vehículo'];
+    // Categorías generales (4 globales + Otros)
+    const categoriasIngreso = ['Salario / Ingresos fijos', 'Ventas / Negocios', 'Inversiones', 'Regalos / Bonos', 'Otros...'];
+    const categoriasGasto = ['Alimentación', 'Vivienda y Servicios', 'Transporte', 'Ocio y Entretenimiento', 'Otros...'];
 
     const opcionesCategoria = esIngreso ? categoriasIngreso : categoriasGasto;
+
+    // Manejador para asegurar que el monto sea positivo y tenga máximo 2 decimales
+    const handleMontoChange = (e) => {
+        let val = e.target.value;
+
+        // No permitir signos negativos
+        if (val.startsWith('-', ',')) {
+            val = val.replace('-', '');
+        }
+
+        // Limitar a máximo 2 decimales
+        if (val.includes('.')) {
+            const partes = val.split('.');
+            if (partes[1].length > 2) {
+                val = `${partes[0]}.${partes[1].substring(0, 2)}`;
+            }
+        }
+
+        setMonto(val);
+    };
 
     // Manejador del envío
     const handleSubmit = (e) => {
@@ -61,9 +81,10 @@ export default function TransactionModal({ isOpen, onClose, tipoModal, carteraIn
                         <input
                             type="number"
                             step="0.01"
+                            min="0"
                             required
                             value={monto}
-                            onChange={(e) => setMonto(e.target.value)}
+                            onChange={handleMontoChange}
                             placeholder="0.00"
                         />
                     </div>

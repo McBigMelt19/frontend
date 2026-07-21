@@ -35,6 +35,10 @@ const DATOS_INICIALES = {
   // ── MÉTRICA 4: Tasa de Ahorro Mensual ─────────────────────
   // Cuánto de tus ingresos de este mes destinaste al fondo del carro ($)
   ahorradoEsteMes: 70,
+  
+  // Datos para Flujo Semanal
+  ingresosSemana: 25,
+  gastosSemana: 15,
 
   // ── MÉTRICA 5: Carteras Multi-moneda ──────────────────────
   carteras: [
@@ -112,7 +116,7 @@ export default function Dashboard() {
         
         <TopLeaks fugas={datos.fugas} />
         
-        <WeeklyFlow ahorradoEsteMes={datos.ahorradoEsteMes} ingresosMes={datos.ingresosMes} />
+        <WeeklyFlow ingresosSemana={datos.ingresosSemana} gastosSemana={datos.gastosSemana} />
         
         <WalletsState carteras={datos.carteras} abrirModal={abrirModal} />
         
